@@ -1,0 +1,100 @@
+// Responsive
+
+$breakpoints-width: (
+    xsmall: 576px,
+    small: 900px,
+    medium: 1200px,
+    large: 1680px,
+    xlarge: 1920px,
+);
+
+@mixin media-xsmall {
+    @media (max-width: map-get($breakpoints-width, xsmall)) {
+        @content;
+    }
+}
+
+@mixin media-small {
+    @media (max-width: map-get($breakpoints-width, small)) {
+        @content;
+    }
+}
+
+@mixin media-medium {
+    @media (max-width: map-get($breakpoints-width, medium)) {
+        @content;
+    }
+}
+
+@mixin media-large {
+    @media (max-width: map-get($breakpoints-width, large)) {
+        @content;
+    }
+}
+
+@mixin media-xlarge {
+    @media (max-width: map-get($breakpoints-width, xlarge)) {
+        @content;
+    }
+}
+
+$breakpoints-height: (
+    xsmall: 800px,
+    small: 860px,
+);
+
+@mixin media-xsmall-height {
+    @media (max-height: map-get($breakpoints-height, xsmall)) {
+        @content;
+    }
+}
+
+@mixin media-small-height {
+    @media (max-height: map-get($breakpoints-height, small)) {
+        @content;
+    }
+}
+
+// Section titles
+
+@mixin title($size) {
+    font-family: var(--font-family-primary);
+    font-size: $size;
+    line-height: 120%;
+    max-width: 25ch;
+    margin-inline: auto; // param $center ?
+}
+
+// CTA
+
+@mixin button($size: var(--font-size-300), $type: "default") {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.75em 3em;
+    border-radius: 2em;
+    border: 3px solid transparent;
+    font-family: var(--font-family-primary);
+    font-size: $size;
+    color: var(--color-neutral-100);
+    text-decoration: inherit;
+    white-space: nowrap;
+    background-color: var(--color-neutral-700);
+    transition: background-color 0.2s ease-out;
+
+    @if $type == "ghost" {
+        border: 3px solid var(--color-neutral-100);
+        background-color: transparent;
+    } @else {
+        &:hover {
+            background-color: var(--color-primary-400);
+        }
+    }
+}
+
+// mixin display column ?
+
+// @mixin column {
+//     flex-direction: column;
+//     align-content: center;
+//     text-align: center;
+// }
